@@ -1,32 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fomu</title>
+  <title>FOMU</title>
+  <meta
+    name="description"
+    content="FOMU is an online platform where users can submit the nickname or account of another person they are interested in. If two users submit each other, FOMU identifies that the interest is mutual inside the platform."
+  />
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e8e8e8;
+      --card: #fafafa;
+      --max-width: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 24px;
+      justify-content: space-between;
+      padding: 18px 0;
     }
-    .wrap { max-width: 700px; }
-    a { color: #8b5cf6; text-decoration: none; }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a,
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 760px;
+    }
+
+    .hero-copy {
+      font-size: 18px;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    section {
+      padding: 24px 0;
+    }
+
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .step-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .support-box {
+      display: inline-block;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding: 28px 0 40px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .subtitle,
+      .hero-copy {
+        font-size: 17px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Fomu</h1>
-    <p>Official website for Fomu.</p>
-    <a href="/privacy-policy">Privacy Policy</a><br />
-    <a href="/terms">Terms & Conditions</a>
-  </div>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">FOMU</div>
+        <nav class="nav-links">
+          <a href="#what-it-does">What FOMU does</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#paid-features">Paid features</a>
+          <a href="#support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>FOMU</h1>
+        <p class="subtitle">A digital platform for mutual interest.</p>
+        <p class="hero-copy">
+          FOMU is an online platform where users can submit the nickname or account
+          of another person they are interested in. If two users submit each other,
+          FOMU identifies that the interest is mutual inside the platform.
+        </p>
+      </div>
+    </section>
+
+    <section id="what-it-does">
+      <div class="container">
+        <div class="section-card">
+          <h2>What FOMU does</h2>
+          <p>
+            FOMU is a digital social discovery product designed to help users identify
+            mutual interest in a simple and private way.
+          </p>
+          <ul>
+            <li>Users can create an account.</li>
+            <li>Users can submit the nickname or account of another person.</li>
+            <li>Users can check whether the interest is mutual.</li>
+            <li>Users receive the result inside the platform.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-card">
+          <h2>How it works</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="step-title">1. Create an account</div>
+              <div class="muted">
+                Users create a FOMU account to access the platform.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-title">2. Submit a nickname or account</div>
+              <div class="muted">
+                Users enter the nickname or account of another person they are interested in.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-title">3. Mutual check</div>
+              <div class="muted">
+                FOMU checks whether that person has also submitted them.
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-title">4. Result inside the platform</div>
+              <div class="muted">
+                If both users have submitted each other, FOMU identifies mutual interest inside the platform.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="paid-features">
+      <div class="container">
+        <div class="section-card">
+          <h2>Paid features</h2>
+          <p>
+            FOMU offers optional paid digital features and subscriptions.
+          </p>
+          <ul>
+            <li>The ability to submit additional nicknames or accounts.</li>
+            <li>Expanded account functionality.</li>
+            <li>Access to premium product features.</li>
+            <li>Enhanced access to tools available within the platform.</li>
+          </ul>
+          <p style="margin-top: 16px;">
+            All paid services are digital and delivered online through the FOMU platform.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="container">
+        <div class="section-card">
+          <h2>Customer support</h2>
+          <p>
+            For questions about the product, billing, subscriptions, account access,
+            or support, please contact:
+          </p>
+          <div class="support-box">support@fomu.app</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Legal</strong>
+      <p class="muted" style="margin-top: 10px;">
+        Please review our legal pages for more information.
+      </p>
+      <div class="footer-links">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,117 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>FOMU</title>
+
   <meta
     name="description"
-    content="FOMU is an online platform where users can submit the nickname or account of another person they are interested in. If two users submit each other, FOMU identifies that the interest is mutual inside the platform."
+    content="FOMU is a mutual vibe-check app for Instagram Stories. Users can add Instagram usernames, share a FOMU link, and reveal mutuals inside the app when the vibe is mutual."
   />
+
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #666666;
-      --border: #e8e8e8;
-      --card: #fafafa;
-      --max-width: 900px;
+      --bg-top: #240038;
+      --bg-mid: #12001f;
+      --bg-bottom: #07000f;
+
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --card: rgba(255, 255, 255, 0.06);
+      --card-strong: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+
+      --accent: #ed36b4;
+
+      --max-width: 980px;
+      --radius: 22px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       line-height: 1.6;
+      background: linear-gradient(
+        180deg,
+        var(--bg-top) 0%,
+        var(--bg-mid) 42%,
+        var(--bg-bottom) 100%
+      );
+      min-height: 100vh;
     }
 
     .container {
+      width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 20px;
     }
 
     header {
-      border-bottom: 1px solid var(--border);
-      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(12, 0, 24, 0.58);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 0;
+      gap: 20px;
+      padding: 16px 0;
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
+      object-fit: contain;
     }
 
     .nav-links {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a,
-    footer a {
-      color: var(--text);
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.86);
       text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
     }
 
     .nav-links a:hover,
-    footer a:hover {
+    .footer-links a:hover {
+      color: #ffffff;
       text-decoration: underline;
     }
 
     .hero {
-      padding: 72px 0 44px;
+      padding: 96px 0 56px;
+      text-align: center;
     }
 
-    h1 {
-      font-size: 48px;
-      line-height: 1.05;
+    .hero-kicker {
+      display: inline-block;
+      margin: 0 0 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(237, 54, 180, 0.10);
+      border: 1px solid rgba(237, 54, 180, 0.24);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
       margin: 0 0 16px;
-      letter-spacing: -0.03em;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      color: var(--muted);
-      margin: 0 0 28px;
-      max-width: 760px;
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -0.06em;
     }
 
     .hero-copy {
-      font-size: 18px;
       max-width: 760px;
-      margin: 0;
+      margin: 0 auto 14px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .hero-rule {
+      margin: 24px auto 0;
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .hero-note {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 15px;
     }
 
     section {
-      padding: 24px 0;
+      padding: 18px 0;
     }
 
     .section-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius);
       padding: 28px;
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .accent-line {
+      display: inline-block;
+      height: 4px;
+      width: 80px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-bottom: 18px;
     }
 
     h2 {
+      margin: 0 0 14px;
       font-size: 28px;
-      margin: 0 0 16px;
+      line-height: 1.1;
       letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 18px;
     }
 
     p {
       margin: 0 0 14px;
+    }
+
+    .muted {
+      color: var(--muted);
     }
 
     ul {
@@ -123,60 +201,127 @@
 
     li {
       margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .steps {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-top: 10px;
+      margin-top: 14px;
     }
 
     .step {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      background: var(--card-strong);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
       padding: 18px;
     }
 
     .step-title {
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 8px;
+      color: #ffffff;
     }
 
-    .muted {
+    .pricing-card {
+      margin-top: 18px;
+      border-radius: 24px;
+      padding: 26px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .pricing-plan {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .pricing-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .pricing-price {
+      font-size: 54px;
+      line-height: 1;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .pricing-period {
+      font-size: 18px;
       color: var(--muted);
     }
 
-    .support-box {
-      display: inline-block;
-      padding: 14px 18px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #fff;
-      font-weight: 600;
-      margin-top: 8px;
+    .pricing-note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .email-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .email-link:hover {
+      text-decoration: underline;
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-      padding: 28px 0 40px;
+      padding: 32px 0 44px;
+      margin-top: 34px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .footer-logo {
+      height: 56px;
+      width: auto;
+      display: block;
+      object-fit: contain;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 12px;
+      gap: 16px;
+      margin-top: 14px;
     }
 
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 36px;
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .subtitle,
+      .nav-links {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .nav-logo img {
+        height: 38px;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .hero-title {
+        font-size: 42px;
+        letter-spacing: -0.05em;
+      }
+
       .hero-copy {
         font-size: 17px;
       }
@@ -185,134 +330,35 @@
         grid-template-columns: 1fr;
       }
 
-      .nav {
-        align-items: flex-start;
-        gap: 12px;
-        flex-direction: column;
+      h2 {
+        font-size: 24px;
+      }
+
+      .pricing-price {
+        font-size: 42px;
+      }
+
+      .footer-logo {
+        height: 46px;
       }
     }
-    .pricing-section {
-  padding: 96px 20px;
-  background: #ffffff;
-}
-
-.pricing-wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.pricing-eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #777;
-  margin-bottom: 12px;
-}
-
-.pricing-title {
-  font-size: 40px;
-  line-height: 1.05;
-  font-weight: 700;
-  color: #000;
-  margin: 0 0 14px;
-}
-
-.pricing-subtitle {
-  font-size: 18px;
-  line-height: 1.5;
-  color: #555;
-  margin: 0 0 36px;
-}
-
-.pricing-card {
-  background: #fff;
-  border: 1px solid #e9e9e9;
-  border-radius: 28px;
-  padding: 36px 28px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-}
-
-.pricing-plan {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-  margin-bottom: 14px;
-}
-
-.pricing-price-row {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.pricing-price {
-  font-size: 56px;
-  line-height: 1;
-  font-weight: 700;
-  color: #000;
-}
-
-.pricing-period {
-  font-size: 18px;
-  color: #666;
-}
-
-.pricing-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 28px;
-}
-
-.pricing-features li {
-  font-size: 17px;
-  color: #222;
-  padding: 10px 0;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-.pricing-features li:last-child {
-  border-bottom: none;
-}
-
-.pricing-button {
-  display: inline-block;
-  width: 100%;
-  max-width: 320px;
-  padding: 16px 22px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 999px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: opacity 0.2s ease;
-}
-
-.pricing-button:hover {
-  opacity: 0.88;
-}
-
-.pricing-note {
-  margin-top: 18px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #777;
-}
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="nav">
-        <div class="logo">FOMU</div>
+        <div class="nav-logo">
+          <img src="fomu-logo.png" alt="FOMU logo" />
+        </div>
+
         <nav class="nav-links">
           <a href="#what-it-does">What FOMU does</a>
           <a href="#how-it-works">How it works</a>
           <a href="#paid-features">Paid features</a>
           <a href="#support">Support</a>
+          <a href="#legal">Legal</a>
         </nav>
       </div>
     </div>
@@ -321,29 +367,48 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>FOMU</h1>
-        <p class="subtitle">A digital platform for mutual interest.</p>
+        <span class="hero-kicker">FOMU</span>
+
+        <h1 class="hero-title">mutual vibe check</h1>
+
         <p class="hero-copy">
-          FOMU is an online platform where users can submit the nickname or account
-          of another person they are interested in. If two users submit each other,
-          FOMU identifies that the interest is mutual inside the platform.
+          FOMU helps users find out which followers share their vibe.
+          Users can add Instagram usernames, share their FOMU link on Instagram Stories,
+          and reveal mutuals inside the app.
         </p>
+
+        <p class="hero-rule">If the vibe is mutual, you’ll know.</p>
+        <p class="hero-note">One-sided choices stay unrevealed.</p>
       </div>
     </section>
 
     <section id="what-it-does">
       <div class="container">
         <div class="section-card">
+          <div class="accent-line"></div>
+
           <h2>What FOMU does</h2>
-          <p>
-            FOMU is a digital social discovery product designed to help users identify
-            mutual interest in a simple and private way.
+
+          <p class="muted">
+            FOMU is a social discovery app built around mutual vibe checks.
           </p>
+
+          <p class="muted">
+            Users can add Instagram accounts they want to include, share a FOMU link
+            through Instagram Stories, and reveal mutuals inside the app.
+          </p>
+
+          <h3>Core features</h3>
+
           <ul>
-            <li>Users can create an account.</li>
-            <li>Users can submit the nickname or account of another person.</li>
-            <li>Users can check whether the interest is mutual.</li>
-            <li>Users receive the result inside the platform.</li>
+            <li>Create a FOMU account</li>
+            <li>Add Instagram usernames</li>
+            <li>Share a FOMU link on Instagram Stories</li>
+            <li>Let people choose you through the FOMU flow</li>
+            <li>Check whether the vibe is mutual</li>
+            <li>Reveal mutuals inside the app</li>
+            <li>Manage added usernames</li>
+            <li>Access optional premium features</li>
           </ul>
         </div>
       </div>
@@ -352,30 +417,46 @@
     <section id="how-it-works">
       <div class="container">
         <div class="section-card">
+          <div class="accent-line"></div>
+
           <h2>How it works</h2>
+
           <div class="steps">
             <div class="step">
               <div class="step-title">1. Create an account</div>
               <div class="muted">
-                Users create a FOMU account to access the platform.
+                Users create a FOMU account to access the app and manage their vibe checks.
               </div>
             </div>
+
             <div class="step">
-              <div class="step-title">2. Submit a nickname or account</div>
+              <div class="step-title">2. Add Instagram usernames</div>
               <div class="muted">
-                Users enter the nickname or account of another person they are interested in.
+                Users add Instagram usernames they want to include in their vibe check.
               </div>
             </div>
+
             <div class="step">
-              <div class="step-title">3. Mutual check</div>
+              <div class="step-title">3. Share a FOMU link</div>
               <div class="muted">
-                FOMU checks whether that person has also submitted them.
+                Users can share their FOMU link through Instagram Stories.
+                People who see the Story can open the link and choose the user through the FOMU flow.
               </div>
             </div>
+
             <div class="step">
-              <div class="step-title">4. Result inside the platform</div>
+              <div class="step-title">4. Mutual vibe check</div>
               <div class="muted">
-                If both users have submitted each other, FOMU identifies mutual interest inside the platform.
+                FOMU checks whether the vibe is mutual.
+                A result is shown only when both people choose each other.
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-title">5. Reveal mutuals</div>
+              <div class="muted">
+                If the vibe is mutual, the user can see the result inside the app.
+                One-sided choices stay unrevealed.
               </div>
             </div>
           </div>
@@ -386,19 +467,42 @@
     <section id="paid-features">
       <div class="container">
         <div class="section-card">
+          <div class="accent-line"></div>
+
           <h2>Paid features</h2>
-          <p>
+
+          <p class="muted">
             FOMU offers optional paid digital features and subscriptions.
           </p>
-          <ul>
-            <li>The ability to submit additional nicknames or accounts.</li>
-            <li>Expanded account functionality.</li>
-            <li>Access to premium product features.</li>
-            <li>Enhanced access to tools available within the platform.</li>
-          </ul>
-          <p style="margin-top: 16px;">
-            All paid services are digital and delivered online through the FOMU platform.
+
+          <p class="muted">
+            Premium features give users more access to vibe checks, account management,
+            and mutual reveal tools inside the app.
           </p>
+
+          <div class="pricing-card">
+            <div class="pricing-plan">FOMU Premium</div>
+
+            <div class="pricing-price-row">
+              <span class="pricing-price">$8.99</span>
+              <span class="pricing-period">/ week</span>
+            </div>
+
+            <ul>
+              <li>Reveal mutuals</li>
+              <li>Add more than 3 usernames</li>
+              <li>Delete and manage added usernames</li>
+              <li>Use premium vibe-check tools</li>
+              <li>Full access to premium features</li>
+              <li>Cancel anytime</li>
+            </ul>
+
+            <p class="pricing-note">
+              Weekly subscription. Optional premium access for additional in-app features.
+              Payment is charged through the app store at confirmation of purchase.
+              Subscriptions can be managed or cancelled through the user’s App Store or Google Play account settings.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -406,54 +510,74 @@
     <section id="support">
       <div class="container">
         <div class="section-card">
+          <div class="accent-line"></div>
+
           <h2>Customer support</h2>
-          <p>
+
+          <p class="muted">
             For questions about the product, billing, subscriptions, account access,
             or support, please contact:
           </p>
-          <div class="support-box">fomu.developer@gmail.com</div>
+
+          <p>
+            <a class="email-link" href="mailto:fomu.developer@gmail.com">
+              fomu.developer@gmail.com
+            </a>
+          </p>
+
+          <h3>Support can help with:</h3>
+
+          <ul>
+            <li>Account access</li>
+            <li>Subscription questions</li>
+            <li>Billing issues</li>
+            <li>Premium features</li>
+            <li>Account deletion</li>
+            <li>Product support</li>
+          </ul>
         </div>
       </div>
     </section>
-    <section id="paid-features" class="pricing-section">
-  <div class="pricing-wrap">
-    <p class="pricing-eyebrow">Pricing</p>
-    <h2 class="pricing-title">Unlock FOMU Premium</h2>
-    <p class="pricing-subtitle">
-      Premium access for additional profile slots and reveal features.
-    </p>
 
-    <div class="pricing-card">
-      <div class="pricing-plan">FOMU Premium</div>
+    <section id="legal">
+      <div class="container">
+        <div class="section-card">
+          <div class="accent-line"></div>
 
-      <div class="pricing-price-row">
-        <span class="pricing-price">$8.99</span>
-        <span class="pricing-period">/ week</span>
+          <h2>Legal</h2>
+
+          <p class="muted">
+            Please review our legal pages for more information about how FOMU works,
+            how user data is handled, subscriptions, refunds, account deletion, and safety.
+          </p>
+
+          <div class="footer-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms &amp; Conditions</a>
+            <a href="/return-policy">Return Policy</a>
+            <a href="/account-deletion">Account Deletion</a>
+            <a href="/child-safety">Child Safety</a>
+          </div>
+        </div>
       </div>
-
-      <ul class="pricing-features">
-        <li>Access premium reveals</li>
-        <li>Add more than 3 usernames</li>
-        <li>Full access to premium tools</li>
-        <li>Cancel anytime</li>
-      </ul>
-
-      <a href="#support" class="pricing-button">Get Premium</a>
-
-      <p class="pricing-note">
-        Weekly subscription. Optional premium access for additional in-app features.
-      </p>
-    </div>
-  </div>
-</section>
+    </section>
   </main>
 
   <footer>
     <div class="container">
-      <strong>Legal</strong>
+      <img class="footer-logo" src="fomu-logo.png" alt="FOMU logo" />
+
       <p class="muted" style="margin-top: 10px;">
-        Please review our legal pages for more information.
+        mutual vibe check
       </p>
+
+      <p class="muted">
+        Contact:
+        <a class="email-link" href="mailto:fomu.developer@gmail.com">
+          fomu.developer@gmail.com
+        </a>
+      </p>
+
       <div class="footer-links">
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms">Terms &amp; Conditions</a>
